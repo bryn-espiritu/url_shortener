@@ -42,7 +42,8 @@
       <th>Code</th>
       <th>Default URL</th>
       <th>Shortened URL</th>
-      <th>Click Counts</th>
+      <th>Total Click Counts</th>
+      <th colspan="2">User Status</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -53,8 +54,11 @@
       <td><%= link.long_url %></td>
       <td><%= link_to link.shortened_url, post_path(link), target: '_blank' %></td>
       <td><%= link.click %></td>
-      <td><%= button_to 'Delete', post_path(link), method: :delete, class: "btn btn-danger" %></td>
+      <td><%= request.user_agent.truncate(50) %></td>
+      <td><%= request.remote_ip %></td>
       <td></td>
+      <td><%= button_to 'Delete', post_path(link), method: :delete, class: "btn btn-danger" %></td>
+
     </tr>
     </tbody>
       <% end %>
