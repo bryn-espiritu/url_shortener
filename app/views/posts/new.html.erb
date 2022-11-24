@@ -1,0 +1,52 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">URL Shortener</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "Sign-in", user_session_path, class: "nav-link", style: "background: none; border: none; color: green" unless user_signed_in? %>
+            <%= button_to 'Sign-Out', destroy_user_session_path, class: "nav-link", style: "background: none; border: none; color: red", method: :delete if user_signed_in? %>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><%= "Welcome #{current_user.email}" if current_user %></a>
+          </li>
+        </ul>
+        <%= form_with model: @link, class: "d-flex", remote: true do |f| %>
+          <%= f.text_field :long_url, class: "form-control me-2", style: "min-width: 436px" %>
+          <%= f.submit 'Generate', class: "btn btn-outline-success" %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
+
+</header>
+
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Code</th>
+      <th>Default URL</th>
+      <th>Shortened URL</th>
+    </tr>
+    </thead>
+    <% @links.each do |link| %>
+    <tbody>
+    <tr>
+      <td><%= link.code %></td>
+      <td><%= link.long_url %></td>
+      <td><%= link_to link.shortened_url, post_path(link), target: '_blank' %></td>
+      <td><%= button_to 'Delete', method: :delete %></td>
+    </tr>
+    </tbody>
+      <% end %>
+  </table>
+</div>
+
+
