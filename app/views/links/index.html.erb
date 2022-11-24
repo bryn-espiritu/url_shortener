@@ -1,0 +1,20 @@
+<h1>Link List</h1>
+
+<table class="table">
+  <thead class="text-center">
+  <td>Original</td>
+  <td>Alias</td>
+  <td>Shortened URL</td>
+  <!--  <td>slugs</td>-->
+  </thead>
+  <tbody>
+  <% @links.each do |link| %>
+    <tr>
+      <td><%= link.url %></td>
+      <td><%= link.shorten %></td>
+      <td><%= link.slug %></td>
+        <td><%= link_to "#{link.shorten}#{link.slug}", link.url, target: '_blank'%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
