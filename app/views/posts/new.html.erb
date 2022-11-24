@@ -42,7 +42,7 @@
       <th>Code</th>
       <th>Default URL</th>
       <th>Shortened URL</th>
-
+      <th>Click Counts</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -52,7 +52,7 @@
       <td><%= link.code %></td>
       <td><%= link.long_url %></td>
       <td><%= link_to link.shortened_url, post_path(link), target: '_blank' %></td>
-
+      <td><%= link.click %></td>
       <td><%= button_to 'Delete', post_path(link), method: :delete, class: "btn btn-danger" %></td>
       <td></td>
     </tr>
