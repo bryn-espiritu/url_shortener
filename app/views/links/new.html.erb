@@ -1,8 +1,0 @@
-<h1>Create URL</h1>
-
-<%= form_with model: @link do |f| %>
-<%= f.text_field :url %>
-  <%= f.text_field :shorten, value: "localhost:3000/", readonly: true%>
-  <%= f.text_field :slug, value: @random %>
-  <%= f.submit %>
-<% end %>
