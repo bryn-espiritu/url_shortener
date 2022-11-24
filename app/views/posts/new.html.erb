@@ -17,24 +17,33 @@
           </li>
         </ul>
         <%= form_with model: @link, class: "d-flex", remote: true do |f| %>
-          <%= f.text_field :long_url, class: "form-control me-2", style: "min-width: 436px" %>
+          <%= f.text_field :long_url, class: "form-control me-2", style: "width: 800px" %>
           <%= f.submit 'Generate', class: "btn btn-outline-success" %>
         <% end %>
       </div>
     </div>
   </nav>
+  <div>
+  <h4 data-controller='clipboard' class="container alert alert-success text-center">
+    <button class="btn btn-outline-dark w-25" data-action="click->clipboard#copy">COPY</button>
+    <span data-clipboard-target="email"><%= @link.recent_shortened_url %></span>
+  </h4>
+  </div>
+  <h1 class="text-center">List of URL</h1>
   <p class="notice" style="color: green"><%= notice %></p>
   <p class="alert" style="color: red"><%= alert %></p>
-
 </header>
 
 <div>
-  <table class="table">
-    <thead>
+  <%if user_signed_in? %>
+  <table class="table text-center ">
+    <thead >
     <tr>
       <th>Code</th>
       <th>Default URL</th>
       <th>Shortened URL</th>
+
+      <th>Actions</th>
     </tr>
     </thead>
     <% @links.each do |link| %>
@@ -43,11 +52,14 @@
       <td><%= link.code %></td>
       <td><%= link.long_url %></td>
       <td><%= link_to link.shortened_url, post_path(link), target: '_blank' %></td>
-      <td><%= button_to 'Delete', method: :delete %></td>
+
+      <td><%= button_to 'Delete', post_path(link), method: :delete, class: "btn btn-danger" %></td>
+      <td></td>
     </tr>
     </tbody>
       <% end %>
   </table>
+<% end %>
 </div>
 
 
