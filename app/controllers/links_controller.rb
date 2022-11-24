@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
 
-  def show
+  def show #table show
     link = Link.find_by(code: params[:code])
     redirect_to link.long_url, allow_other_host: true
   end
