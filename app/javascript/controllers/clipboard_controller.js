@@ -1,11 +1,11 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = ["shortened_url"]
+    static targets = ["source"]
 
     copy() {
-        let email = this.shortened_urlTarget.textContent
-        navigator.clipboard.writeText(shortened_url)
-        document.getElementsByClassName("notice")[0].innerHTML= 'your' + shortened_url + 'was successfully copied'
+        let source = this.sourceTarget.textContent
+        navigator.clipboard.writeText(source)
+        document.getElementsByClassName("notice")[0].innerHTML= 'your' + source + 'was successfully copied'
     }
 }

@@ -17,7 +17,8 @@
           </li>
         </ul>
         <%= form_with model: @link, class: "d-flex", remote: true do |f| %>
-          <%= f.text_field :long_url, class: "form-control me-2", style: "width: 800px" %>
+          <%= f.text_field :long_url, class: "form-control me-2", style: "width: 800px" , placeholder: "Enter URL here" %>
+          <%= f.text_field :alias, class: "form-control me-2", style: "width: 200px",  placeholder: "Enter Alias here" %>
           <%= f.submit 'Generate', class: "btn btn-outline-success" %>
         <% end %>
       </div>
@@ -26,7 +27,7 @@
   <div>
   <h4 data-controller='clipboard' class="container alert alert-success text-center">
     <button class="btn btn-outline-dark w-25" data-action="click->clipboard#copy">COPY</button>
-    <span data-clipboard-target="email"><%= @link.recent_shortened_url %></span>
+    <span data-clipboard-target="source"><%= @link.recent_shortened_url %></span>
   </h4>
   </div>
   <h1 class="text-center">List of URL</h1>
