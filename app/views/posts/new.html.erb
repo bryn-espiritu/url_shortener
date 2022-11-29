@@ -30,7 +30,7 @@
     <span data-clipboard-target="source"><%= @link.recent_shortened_url %></span>
   </h4>
   </div>
-  <h1 class="text-center">List of URL</h1>
+  <h1 class="text-center">List of URL</h1>  <%= link_to "Export CSV", links_path(:format => :csv), :class => "btn btn-default" %>
   <p class="notice" style="color: green"><%= notice %></p>
   <p class="alert" style="color: red"><%= alert %></p>
 </header>

@@ -1,6 +1,5 @@
 class Link < ApplicationRecord
   validates_presence_of :code, :long_url
-  validates_uniqueness_of :code
   validate :long_url_format
 
   def long_url_format

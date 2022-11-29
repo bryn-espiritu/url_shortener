@@ -7,8 +7,9 @@ class Shortener
   end
 
   def generate_short_link
-    link_model.create(long_url: url, code: code)
-  end
+      link_model.create(long_url: url, code: code)
+      # Rails.application.routes.url_helpers.url(alias: self.alias)
+    end
 
   def code
     loop do
